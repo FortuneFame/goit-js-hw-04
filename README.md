@@ -86,14 +86,91 @@ const arr = [1, 2, 3, 4, 5, 1, 2, 5];
 
 # Задание 3
 
-```js
+Callback функция для получения одного вычисляемого значения массива Функции add,
+sub и mult принимают два параметра - accum и element , возвращает число - сумму,
+разность или произведение параметров.
 
+Дополни тело функции reduceArray строкой присвоения accum вызова функции cb.
+Функция reduceArray должна будет подсчитать сумму или разность или произведение
+всех элементов массива в зависимости от того какая именно из трех функция (add,
+mult, sub) будет передана в качестве cb.
+
+```js
+const add = (accum, element) => accum + element;
+const mult = (accum, element) => accum * element;
+const sub = (accum, element) => accum - element;
+
+function reduceArray(array, cb, initial) {
+  'use strict';
+  let i;
+  let accum;
+  if (arguments.length >= 3) {
+    accum = initial;
+    i = 0;
+  }
+  if (arguments.length === 2) {
+    accum = array[0];
+    i = 1;
+  }
+  for (i; i < array.length; i += 1) {
+    const element = array[i];
+    // Write code under this line
+  }
+  return accum;
+}
+
+const arr = [1, 2, 3, 4, 5];
+
+//console.log(reduceArray(arr, add)); // 15
+//console.log(reduceArray(arr, add, 10)); // 25
+
+//console.log(reduceArray(arr, mult)); // 120
+//console.log(reduceArray(arr, mult, 10)); // 1200
+
+//console.log(reduceArray(arr, sub)); // -13
+//console.log(reduceArray(arr, sub, 10)); // -5
 ```
 
 # Задание 4
 
-```js
+this в методах объекта Расставь отсутствующие this в методах объекта account.
 
+В комментариях показаны операции с объектом и ожидаемые результаты.
+
+```js
+const account = {
+  owner: 'Mango',
+  balance: 24000,
+  discount: 0.1,
+  orders: ['order-1', 'order-2', 'order-3'],
+  changeDiscount(value) {
+    discount = value; // Write code in this line
+  },
+  showOrders() {
+    return orders; // Write code in this line
+  },
+  addOrder(cost, order) {
+    balance -= cost; // Write code in this line
+    orders.push(order); // Write code in this line
+  },
+};
+const copyAccount = Object.assign({}, account);
+copyAccount.orders = [...account.orders];
+// копируем для автотестов ссылочные типы
+
+/*
+account.changeDiscount(0.15);
+//console.log(account.discount); // 0.15
+
+//console.log(account.showOrders()); 
+// ['order-1', 'order-2', 'order-3']
+
+account.addOrder(5000, 'order-4');
+//console.log(account.balance); // 19000
+
+//console.log(account.showOrders());
+// ['order-1', 'order-2', 'order-3', 'order-4']
+*/
 ```
 
 # Задание 5
